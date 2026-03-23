@@ -21,6 +21,21 @@ const FormContainer = styled.div`
     height: 4px;
     background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
   }
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 360px) {
+    padding: 1rem;
+    border-radius: 10px;
+  }
 `;
 
 const FormTitle = styled.h3`
@@ -28,6 +43,18 @@ const FormTitle = styled.h3`
   font-size: 1.8rem;
   color: #1a202c;
   margin: 0 0 0.5rem 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const FormSubtitle = styled.p`

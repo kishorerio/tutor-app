@@ -22,31 +22,57 @@ const HeroContainer = styled.div `
   }
 `;
 
-const HeroContent = styled.div `
+const HeroContent = styled.div`
   position: relative;
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
   padding: 0 5rem;
 
+  @media (max-width: 1024px) {
+    padding: 0 3rem;
+  }
+
   @media (max-width: 768px) {
     padding: 0 2rem;
   }
-`;
 
-const HeroTitle = styled.h1 `
-  font-family: 'Gilroy-ExtraBold', sans-serif;
-  font-size: 3rem;
-  margin: 0 0 0.875rem
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  letter-spacing: -0.02em;
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+  }
 
-  @media (max-width: 768px) {
-    font-size: 3rem;
+  @media (max-width: 360px) {
+    padding: 0 0.5rem;
   }
 `;
 
-const HeroSubtitle = styled.p `
+const HeroTitle = styled.h1`
+  font-family: 'Gilroy-ExtraBold', sans-serif;
+  font-size: 3rem;
+  margin: 0 0 0.875rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+
+  @media (max-width: 1024px) {
+    font-size: 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 1.6rem;
+    margin: 0 0 0.5rem 0;
+  }
+`;
+
+const HeroSubtitle = styled.p`
   font-family: 'Gilroy-Medium', sans-serif;
   font-size: 1.2rem;
   margin: 0;
@@ -54,7 +80,17 @@ const HeroSubtitle = styled.p `
   line-height: 1.6;
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 `;
 

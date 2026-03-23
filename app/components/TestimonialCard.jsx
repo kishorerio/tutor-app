@@ -15,6 +15,18 @@ const Card = styled.div`
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
+
+  @media (max-width: 768px) {
+    border-radius: 15px;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 12px;
+  }
+
+  @media (max-width: 360px) {
+    border-radius: 10px;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -81,6 +93,14 @@ const CardDescription = styled.p`
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 1.8rem;
   }
 `;
 

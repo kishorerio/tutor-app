@@ -53,7 +53,7 @@ const HamburgerButton = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 101;
+  z-index: 103;
 
   @media (max-width: 1024px) {
     display: flex;
@@ -103,6 +103,7 @@ const NavLinks = styled.div`
     transition: transform 0.3s ease;
     gap: 0;
     overflow-y: auto;
+    z-index: 102;
   }
 
   @media (max-width: 480px) {
@@ -122,7 +123,7 @@ const NavLinksOverlay = styled.div`
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
+    z-index: 100;
   }
 `;
 
@@ -153,10 +154,11 @@ const NavLink = styled(Link)`
     padding: 1rem;
     border-bottom: 1px solid #f1f5f9;
     border-radius: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
 
     &:last-of-type {
-      border-bottom: none;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 1.5rem;
     }
   }
 `;
@@ -170,9 +172,8 @@ const ButtonGroup = styled.div`
     flex-direction: column;
     width: 100%;
     gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #f1f5f9;
+    padding: 0;
+    margin: 0;
   }
 `;
 
@@ -197,6 +198,8 @@ const LoginButton = styled.button`
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -223,6 +226,7 @@ const JoinButton = styled.button`
     width: 100%;
     padding: 1rem;
     font-size: 1rem;
+    border-radius: 8px;
   }
 `;
 
