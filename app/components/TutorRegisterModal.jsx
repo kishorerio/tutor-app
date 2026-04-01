@@ -387,6 +387,7 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
     name: '',
     contactNumber: '',
     email: '',
+    location: '',
     pinCode: '',
     password: '',
     confirmPassword: '',
@@ -533,6 +534,21 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
             </InputGroup>
 
             <InputGroup>
+              <Label htmlFor="location">Location</Label>
+              <Input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Enter your city/area"
+                value={formData.location}
+                onChange={handleInputChange}
+                required
+              />
+            </InputGroup>
+          </FormRow>
+
+          <FormRow>
+            <InputGroup>
               <Label htmlFor="pinCode">Pin Code</Label>
               <Input
                 type="text"
@@ -544,9 +560,7 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
                 required
               />
             </InputGroup>
-          </FormRow>
 
-          <FormRow>
             <InputGroup>
               <Label htmlFor="password">Password</Label>
               <Input
@@ -559,7 +573,9 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
                 required
               />
             </InputGroup>
+          </FormRow>
 
+          <FormRow>
             <InputGroup>
               <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input
