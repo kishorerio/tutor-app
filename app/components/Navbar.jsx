@@ -7,6 +7,8 @@ import { useState } from 'react';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 import TutorRegisterModal from './TutorRegisterModal';
+import TutorNextStepModal from './TutorNextStepModal';
+import TutorFinalStepModal from './TutorFinalStepModal';
 
 const NavbarContainer = styled.nav`
   display: flex;
@@ -43,7 +45,9 @@ const Logo = styled.div`
   }
 `;
 
-const HamburgerButton = styled.button`
+const HamburgerButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})`
   display: none;
   flex-direction: column;
   justify-content: space-around;
@@ -81,7 +85,9 @@ const HamburgerButton = styled.button`
   }
 `;
 
-const NavLinks = styled.div`
+const NavLinks = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})`
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -112,7 +118,9 @@ const NavLinks = styled.div`
   }
 `;
 
-const NavLinksOverlay = styled.div`
+const NavLinksOverlay = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== 'isOpen',
+})`
   display: none;
 
   @media (max-width: 1024px) {
@@ -235,7 +243,10 @@ export default function Navbar() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isTutorRegisterModalOpen, setIsTutorRegisterModalOpen] = useState(false);
+  const [isTutorNextStepModalOpen, setIsTutorNextStepModalOpen] = useState(false);
+  const [isTutorFinalStepModalOpen, setIsTutorFinalStepModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedTutorCategories, setSelectedTutorCategories] = useState([]);
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -265,6 +276,34 @@ export default function Navbar() {
 
   const handleCloseTutorRegisterModal = () => {
     setIsTutorRegisterModalOpen(false);
+  };
+
+  const handleCloseTutorNextStepModal = () => {
+    setIsTutorNextStepModalOpen(false);
+  };
+
+  const handleCloseTutorFinalStepModal = () => {
+    setIsTutorFinalStepModalOpen(false);
+  };
+
+  const handleShowTutorNextStep = () => {
+    setIsTutorNextStepModalOpen(true);
+  };
+
+  const handleShowTutorFinalStep = (categories) => {
+    setSelectedTutorCategories(categories);
+    setIsTutorFinalStepModalOpen(true);
+  };
+
+  const handleTutorNextStepComplete = (selectedCategories) => {
+    console.log('Tutor categories selected:', selectedCategories);
+    setSelectedTutorCategories(selectedCategories);
+  };
+
+  const handleTutorFinalStepComplete = (finalData) => {
+    console.log('Tutor registration completed:', finalData);
+    // Handle the final completion of tutor registration
+    alert('Tutor registration completed successfully!');
   };
 
   const handleSwitchToRegister = () => {
@@ -346,6 +385,21 @@ export default function Navbar() {
         isOpen={isTutorRegisterModalOpen} 
         onClose={handleCloseTutorRegisterModal}
         onSwitchToLogin={handleSwitchToTutorLogin}
+        onShowNextStep={handleShowTutorNextStep}
+      />
+      
+      <TutorNextStepModal 
+        isOpen={isTutorNextStepModalOpen} 
+        onClose={handleCloseTutorNextStepModal}
+        onComplete={handleTutorNextStepComplete}
+        onShowFinalStep={handleShowTutorFinalStep}
+      />
+      
+      <TutorFinalStepModal 
+        isOpen={isTutorFinalStepModalOpen} 
+        onClose={handleCloseTutorFinalStepModal}
+        onComplete={handleTutorFinalStepComplete}
+        selectedCategories={selectedTutorCategories}
       />
     </>
   );

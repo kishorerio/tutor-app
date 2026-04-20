@@ -99,8 +99,9 @@ const Input = styled.input`
   border-radius: 12px;
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
+  color: #374151;
+  background: white;
   transition: all 0.3s ease;
-  background: #fafafa;
 
   &:focus {
     outline: none;
@@ -120,10 +121,11 @@ const TextArea = styled.textarea`
   border-radius: 12px;
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
+  color: #374151;
+  background: white;
   min-height: 140px;
   resize: vertical;
   transition: all 0.3s ease;
-  background: #fafafa;
 
   &:focus {
     outline: none;

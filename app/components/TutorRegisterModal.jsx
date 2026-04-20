@@ -1,7 +1,7 @@
 'use client';
 
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -29,7 +29,7 @@ const ModalContent = styled.div`
   border-radius: 20px;
   padding: 2rem;
   width: 90%;
-  max-width: 600px;
+  max-width: 650px;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
@@ -84,7 +84,6 @@ const ModalTitle = styled.h2`
 
   @media (max-height: 700px) {
     font-size: 1.5rem;
-    margin: 0 0 0.3rem 0;
   }
 `;
 
@@ -97,7 +96,6 @@ const ModalSubtitle = styled.p`
 
   @media (max-height: 700px) {
     margin: 0 0 1rem 0;
-    font-size: 0.8rem;
   }
 `;
 
@@ -106,12 +104,8 @@ const RegisterForm = styled.form`
   flex-direction: column;
   gap: 1.2rem;
 
-  @media (max-height: 800px) {
-    gap: 1rem;
-  }
-
   @media (max-height: 700px) {
-    gap: 0.8rem;
+    gap: 1rem;
   }
 `;
 
@@ -130,20 +124,12 @@ const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-
-  @media (max-height: 700px) {
-    gap: 0.3rem;
-  }
 `;
 
 const Label = styled.label`
   font-family: 'Gilroy-SemiBold', sans-serif;
   color: #374151;
   font-size: 0.9rem;
-
-  @media (max-height: 700px) {
-    font-size: 0.8rem;
-  }
 `;
 
 const Input = styled.input`
@@ -152,6 +138,8 @@ const Input = styled.input`
   border-radius: 8px;
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
+  color: #374151;
+  background: white;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -169,159 +157,15 @@ const Input = styled.input`
   }
 `;
 
-const FileUploadContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  border: 2px dashed #e2e8f0;
-  border-radius: 8px;
-  background: #f8fafc;
-  transition: all 0.3s ease;
-  cursor: pointer;
-
-  &:hover {
-    border-color: #667eea;
-    background: #f1f5f9;
-  }
-
-  @media (max-height: 700px) {
-    padding: 1.5rem;
-  }
-`;
-
 const FileInput = styled.input`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-`;
-
-const FileUploadText = styled.p`
-  font-family: 'Gilroy-Medium', sans-serif;
-  color: #64748b;
-  margin: 0;
-  text-align: center;
-  font-size: 0.9rem;
-
-  @media (max-height: 700px) {
-    font-size: 0.8rem;
-  }
-`;
-
-const PreferenceSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-`;
-
-const PreferenceTitle = styled.h4`
-  font-family: 'Gilroy-SemiBold', sans-serif;
-  color: #374151;
-  margin: 0;
-  font-size: 0.9rem;
-
-  @media (max-height: 700px) {
-    font-size: 0.8rem;
-  }
-`;
-
-const CheckboxGroup = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0.8rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const CheckboxItem = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  font-family: 'Gilroy-Regular', sans-serif;
-  color: #374151;
-  font-size: 0.9rem;
-
-  @media (max-height: 700px) {
-    font-size: 0.8rem;
-  }
-`;
-
-const Checkbox = styled.input`
-  width: 1.2rem;
-  height: 1.2rem;
-  accent-color: #667eea;
-`;
-
-const CaptchaContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f8fafc;
-  border-radius: 8px;
-  border: 2px solid #e2e8f0;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-`;
-
-const CaptchaDisplay = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const CaptchaText = styled.div`
-  font-family: 'Gilroy-Bold', sans-serif;
-  font-size: 1.2rem;
-  color: #1a202c;
-  background: white;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  letter-spacing: 2px;
-  border: 1px solid #d1d5db;
-
-  @media (max-height: 700px) {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-  }
-`;
-
-const RefreshButton = styled.button`
-  background: #667eea;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #5a67d8;
-  }
-
-  @media (max-height: 700px) {
-    padding: 0.4rem;
-    font-size: 0.8rem;
-  }
-`;
-
-const CaptchaInput = styled.input`
-  flex: 1;
   padding: 0.8rem;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
   font-family: 'Gilroy-Regular', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  color: #374151;
+  background: white;
+  transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
@@ -330,7 +174,103 @@ const CaptchaInput = styled.input`
 
   @media (max-height: 700px) {
     padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+`;
+
+const Select = styled.select`
+  padding: 0.8rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Gilroy-Regular', sans-serif;
+  font-size: 1rem;
+  color: #374151;
+  background: white;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+
+  option {
+    background: white !important;
+    color: #374151 !important;
+    padding: 0.5rem;
+    font-family: 'Gilroy-Regular', sans-serif;
+  }
+
+  @media (max-height: 700px) {
+    padding: 0.7rem;
     font-size: 0.9rem;
+  }
+`;
+
+const CheckboxGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+`;
+
+const CheckboxItem = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  font-family: 'Gilroy-Regular', sans-serif;
+  color: #374151;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
+`;
+
+const Checkbox = styled.input`
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: #667eea;
+  cursor: pointer;
+`;
+
+const CaptchaContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+`;
+
+const CaptchaText = styled.span`
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 1.2rem;
+  color: #1a202c;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  letter-spacing: 2px;
+  user-select: none;
+`;
+
+const RefreshButton = styled.button`
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: #5a67d8;
   }
 `;
 
@@ -362,11 +302,6 @@ const LoginLink = styled.div`
   font-family: 'Gilroy-Regular', sans-serif;
   color: #64748b;
   font-size: 0.9rem;
-
-  @media (max-height: 700px) {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-  }
 `;
 
 const LoginButton = styled.button`
@@ -382,7 +317,18 @@ const LoginButton = styled.button`
   }
 `;
 
-export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin }) {
+// Generate random captcha
+const generateCaptcha = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < 6; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+};
+
+export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin, onShowNextStep }) {
+  const [captcha, setCaptcha] = useState(generateCaptcha());
   const [formData, setFormData] = useState({
     name: '',
     contactNumber: '',
@@ -390,7 +336,6 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
     location: '',
     pinCode: '',
     password: '',
-    confirmPassword: '',
     profileImage: null,
     captchaInput: '',
     preferences: {
@@ -398,86 +343,68 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
       theirHome: false,
       noPreference: false,
       online: false,
-      institute: false
+      instituteOrCoaching: false
     }
   });
 
-  const [captchaCode, setCaptchaCode] = useState('');
-
-  // Generate new captcha when modal opens
-  const generateCaptcha = () => {
-    return Math.random().toString(36).substring(2, 8).toUpperCase();
-  };
-
-  // Update captcha when modal opens
-  useEffect(() => {
-    if (isOpen) {
-      setCaptchaCode(generateCaptcha());
-      setFormData(prev => ({
-        ...prev,
-        captchaInput: '' // Clear previous captcha input
-      }));
-    }
-  }, [isOpen]);
-
   const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    
-    if (name.startsWith('preference_')) {
-      const prefKey = name.replace('preference_', '');
+    const { name, value, type, files } = e.target;
+    if (type === 'file') {
       setFormData(prev => ({
         ...prev,
-        preferences: {
-          ...prev.preferences,
-          [prefKey]: checked
-        }
+        [name]: files[0]
       }));
     } else {
       setFormData(prev => ({
         ...prev,
-        [name]: type === 'checkbox' ? checked : value
+        [name]: value
       }));
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const handlePreferenceChange = (preference) => {
     setFormData(prev => ({
       ...prev,
-      profileImage: file
+      preferences: {
+        ...prev.preferences,
+        [preference]: !prev.preferences[preference]
+      }
+    }));
+  };
+
+  const refreshCaptcha = () => {
+    setCaptcha(generateCaptcha());
+    setFormData(prev => ({
+      ...prev,
+      captchaInput: ''
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Validation
-    if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
+    // Validate captcha
+    if (formData.captchaInput !== captcha) {
+      alert('Captcha verification failed. Please try again.');
+      refreshCaptcha();
       return;
     }
-    
-    if (formData.captchaInput !== captchaCode) {
-      alert('Captcha verification failed');
+
+    // Check if at least one preference is selected
+    const hasPreference = Object.values(formData.preferences).some(pref => pref);
+    if (!hasPreference) {
+      alert('Please select at least one teaching preference.');
       return;
     }
     
     console.log('Tutor registration attempt:', formData);
-    // Add registration logic here
     onClose();
+    onShowNextStep();
   };
 
   const handleLoginClick = () => {
     onClose();
     onSwitchToLogin();
-  };
-
-  const handleRefreshCaptcha = () => {
-    setCaptchaCode(generateCaptcha());
-    setFormData(prev => ({
-      ...prev,
-      captchaInput: '' // Clear captcha input when refreshed
-    }));
   };
 
   if (!isOpen) return null;
@@ -487,7 +414,7 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
       <ModalContent onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={onClose}>×</CloseButton>
         
-        <ModalTitle>Join as a Tutor</ModalTitle>
+        <ModalTitle>Join for Free as a Tutor</ModalTitle>
         <ModalSubtitle>Create your tutor profile and start teaching</ModalSubtitle>
         
         <RegisterForm onSubmit={handleSubmit}>
@@ -521,7 +448,7 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
 
           <FormRow>
             <InputGroup>
-              <Label htmlFor="email">Email Address</Label>
+              <Label htmlFor="email">Email ID</Label>
               <Input
                 type="email"
                 id="email"
@@ -535,15 +462,50 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
 
             <InputGroup>
               <Label htmlFor="location">Location</Label>
-              <Input
-                type="text"
+              <Select
                 id="location"
                 name="location"
-                placeholder="Enter your city/area"
                 value={formData.location}
                 onChange={handleInputChange}
                 required
-              />
+              >
+                <option value="">Select your city</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Indore">Indore</option>
+                <option value="Thane">Thane</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+                <option value="Pimpri-Chinchwad">Pimpri-Chinchwad</option>
+                <option value="Patna">Patna</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Ghaziabad">Ghaziabad</option>
+                <option value="Ludhiana">Ludhiana</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Kochi">Kochi</option>
+                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Salem">Salem</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Tirunelveli">Tirunelveli</option>
+                <option value="Erode">Erode</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Thanjavur">Thanjavur</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Cuddalore">Cuddalore</option>
+                <option value="Other">Other</option>
+              </Select>
             </InputGroup>
           </FormRow>
 
@@ -575,118 +537,90 @@ export default function TutorRegisterModal({ isOpen, onClose, onSwitchToLogin })
             </InputGroup>
           </FormRow>
 
-          <FormRow>
-            <InputGroup>
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                placeholder="Confirm your password"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                required
-              />
-            </InputGroup>
-          </FormRow>
-
           <InputGroup>
-            <Label>Profile Image</Label>
-            <FileUploadContainer>
-              <FileInput
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-              />
-              <FileUploadText>
-                {formData.profileImage 
-                  ? `Selected: ${formData.profileImage.name}`
-                  : 'Click to upload profile image (JPG, PNG)'
-                }
-              </FileUploadText>
-            </FileUploadContainer>
+            <Label htmlFor="profileImage">Profile Image Upload</Label>
+            <FileInput
+              type="file"
+              id="profileImage"
+              name="profileImage"
+              accept="image/*"
+              onChange={handleInputChange}
+            />
           </InputGroup>
 
-          <PreferenceSection>
-            <PreferenceTitle>Teaching Preferences</PreferenceTitle>
+          <InputGroup>
+            <Label>Teaching Preferences</Label>
             <CheckboxGroup>
               <CheckboxItem>
                 <Checkbox
                   type="checkbox"
-                  name="preference_myHome"
                   checked={formData.preferences.myHome}
-                  onChange={handleInputChange}
+                  onChange={() => handlePreferenceChange('myHome')}
                 />
                 My Home
               </CheckboxItem>
               <CheckboxItem>
                 <Checkbox
                   type="checkbox"
-                  name="preference_theirHome"
                   checked={formData.preferences.theirHome}
-                  onChange={handleInputChange}
+                  onChange={() => handlePreferenceChange('theirHome')}
                 />
                 Their Home
               </CheckboxItem>
               <CheckboxItem>
                 <Checkbox
                   type="checkbox"
-                  name="preference_noPreference"
                   checked={formData.preferences.noPreference}
-                  onChange={handleInputChange}
+                  onChange={() => handlePreferenceChange('noPreference')}
                 />
                 No Preference
               </CheckboxItem>
               <CheckboxItem>
                 <Checkbox
                   type="checkbox"
-                  name="preference_online"
                   checked={formData.preferences.online}
-                  onChange={handleInputChange}
+                  onChange={() => handlePreferenceChange('online')}
                 />
                 Online
               </CheckboxItem>
               <CheckboxItem>
                 <Checkbox
                   type="checkbox"
-                  name="preference_institute"
-                  checked={formData.preferences.institute}
-                  onChange={handleInputChange}
+                  checked={formData.preferences.instituteOrCoaching}
+                  onChange={() => handlePreferenceChange('instituteOrCoaching')}
                 />
                 Institute or Coaching Center
               </CheckboxItem>
             </CheckboxGroup>
-          </PreferenceSection>
+          </InputGroup>
 
           <InputGroup>
             <Label>Captcha Verification</Label>
             <CaptchaContainer>
-              <CaptchaDisplay>
-                <CaptchaText>{captchaCode}</CaptchaText>
-                <RefreshButton type="button" onClick={handleRefreshCaptcha}>
-                  ↻
-                </RefreshButton>
-              </CaptchaDisplay>
-              <CaptchaInput
-                type="text"
-                name="captchaInput"
-                placeholder="Enter the captcha code"
-                value={formData.captchaInput}
-                onChange={handleInputChange}
-                required
-              />
+              <CaptchaText>{captcha}</CaptchaText>
+              <RefreshButton type="button" onClick={refreshCaptcha}>
+                ↻
+              </RefreshButton>
             </CaptchaContainer>
+            <Input
+              type="text"
+              name="captchaInput"
+              placeholder="Enter the captcha above"
+              value={formData.captchaInput}
+              onChange={handleInputChange}
+              required
+            />
           </InputGroup>
 
           <RegisterButton type="submit">
-            Register as Tutor
+            Register
           </RegisterButton>
         </RegisterForm>
 
         <LoginLink>
           Already have an account?{' '}
           <LoginButton onClick={handleLoginClick}>
-            Login here
+            Login
           </LoginButton>
         </LoginLink>
       </ModalContent>

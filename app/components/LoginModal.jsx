@@ -113,6 +113,8 @@ const Input = styled.input`
   border-radius: 8px;
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
+  color: #374151;
+  background: white;
   transition: border-color 0.3s ease;
 
   &:focus {

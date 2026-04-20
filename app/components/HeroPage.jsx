@@ -143,6 +143,7 @@ const PincodeInput = styled.input`
   border-radius: 6px;
   font-size: 1rem;
   font-family: 'Gilroy-Regular', sans-serif;
+  color: #374151;
   transition: border-color 0.3s ease;
 
   &::placeholder {
@@ -174,6 +175,7 @@ const Input = styled.input`
   border-radius: 6px;
   font-size: 1rem;
   font-family: 'Gilroy-Regular', sans-serif;
+  color: #374151;
   transition: border-color 0.3s ease;
 
   &::placeholder {

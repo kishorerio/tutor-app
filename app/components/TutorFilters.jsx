@@ -40,11 +40,30 @@ const FilterSelect = styled.select`
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
   background: white;
+  color: #374151;
   transition: border-color 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: #667eea;
+  }
+
+  option {
+    background: white !important;
+    color: #374151 !important;
+    padding: 0.5rem;
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-weight: normal;
+  }
+
+  option:hover {
+    background: #f1f5f9 !important;
+    color: #1a202c !important;
+  }
+
+  option:checked {
+    background: #667eea !important;
+    color: white !important;
   }
 `;
 
@@ -55,6 +74,8 @@ const FilterInput = styled.input`
   border-radius: 8px;
   font-family: 'Gilroy-Regular', sans-serif;
   font-size: 1rem;
+  color: #374151;
+  background: white;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -117,9 +138,41 @@ export default function TutorFilters({ filters, onFilterChange, onApplyFilters, 
           onChange={(e) => onFilterChange('location', e.target.value)}
         >
           <option value="">All Locations</option>
-          <option value="Coimbatore">Coimbatore</option>
-          <option value="Chennai">Chennai</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
           <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Pune">Pune</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Surat">Surat</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Kanpur">Kanpur</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Indore">Indore</option>
+          <option value="Thane">Thane</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+          <option value="Pimpri-Chinchwad">Pimpri-Chinchwad</option>
+          <option value="Patna">Patna</option>
+          <option value="Vadodara">Vadodara</option>
+          <option value="Ghaziabad">Ghaziabad</option>
+          <option value="Ludhiana">Ludhiana</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Kochi">Kochi</option>
+          <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+          <option value="Madurai">Madurai</option>
+          <option value="Salem">Salem</option>
+          <option value="Tiruchirappalli">Tiruchirappalli</option>
+          <option value="Tirunelveli">Tirunelveli</option>
+          <option value="Erode">Erode</option>
+          <option value="Vellore">Vellore</option>
+          <option value="Thanjavur">Thanjavur</option>
+          <option value="Dindigul">Dindigul</option>
+          <option value="Cuddalore">Cuddalore</option>
+          <option value="Other">Other</option>
         </FilterSelect>
       </FilterGroup>
 
